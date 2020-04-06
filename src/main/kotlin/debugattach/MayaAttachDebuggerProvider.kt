@@ -9,7 +9,6 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.UserDataHolder
 import com.intellij.xdebugger.attach.*
 import com.jetbrains.python.sdk.PythonSdkType
-import com.jetbrains.python.sdk.PythonSdkUtil
 import javax.swing.Icon
 
 
@@ -29,7 +28,7 @@ class MayaAttachDebuggerProvider : XAttachDebuggerProvider {
             exePath.contains(it.mayaPath.toLowerCase())
         } ?: return mutableListOf()
 
-        return mutableListOf(MayaAttachDebugger(PythonSdkUtil.findSdkByPath(currentSdk.mayaPyPath)!!))
+        return mutableListOf(MayaAttachDebugger(PythonSdkType.findSdkByPath(currentSdk.mayaPyPath)!!))
     }
 
     override fun isAttachHostApplicable(attachHost: XAttachHost): Boolean = attachHost is LocalAttachHost

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ca.rightsomegoodgames.mayacharm"
-version = "3.2.0"
+version = "3.1.3"
 
 repositories {
     mavenCentral()
@@ -20,9 +20,10 @@ val publishToken: String? = System.getenv("IntellijPublishToken")
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = "2019.3"
+//    version = "2019.2"
+    localPath = "C:\\Users\\chris\\AppData\\Local\\JetBrains\\Toolbox\\apps\\PyCharm-P\\ch-2\\192.7142.79\\"
     type = "PY"
-    setPlugins("python")
+//    setPlugins("python")
 }
 
 configure<JavaPluginConvention> {

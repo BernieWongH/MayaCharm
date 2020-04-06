@@ -4,7 +4,7 @@ import mayacomms.mayaFromMayaPy
 import mayacomms.mayaPyExecutableName
 
 import com.intellij.openapi.components.*
-import com.jetbrains.python.sdk.PythonSdkUtil
+import com.jetbrains.python.sdk.PythonSdkType
 import java.util.*
 
 typealias SdkPortMap = MutableMap<String, ApplicationSettings.SdkInfo>
@@ -30,7 +30,7 @@ class ApplicationSettings : PersistentStateComponent<ApplicationSettings.State> 
     }
 
     init {
-        val mayaSdk = PythonSdkUtil.getAllLocalCPythons().filter { it.homePath?.endsWith(mayaPyExecutableName) ?: false }
+        val mayaSdk = PythonSdkType.getAllLocalCPythons().filter { it.homePath?.endsWith(mayaPyExecutableName) ?: false }
         val homePaths = mayaSdk.map { it.homePath!! }
 
         for (path in homePaths) {
@@ -48,7 +48,7 @@ class ApplicationSettings : PersistentStateComponent<ApplicationSettings.State> 
     }
 
     override fun loadState(state: State) {
-        val mayaPySdks = PythonSdkUtil.getAllLocalCPythons().filter { x -> x.homePath?.endsWith(mayaPyExecutableName) ?: false }
+        val mayaPySdks = PythonSdkType.getAllLocalCPythons().filter { x -> x.homePath?.endsWith(mayaPyExecutableName) ?: false }
         val homePaths = mayaPySdks.map { it.homePath!! }
 
         mayaSdkMapping.clear()
@@ -64,7 +64,7 @@ class ApplicationSettings : PersistentStateComponent<ApplicationSettings.State> 
     }
 
     fun refreshPythonSdks() {
-        val mayaSdk = PythonSdkUtil.getAllLocalCPythons().filter { it.homePath?.endsWith(mayaPyExecutableName) ?: false }
+        val mayaSdk = PythonSdkType.getAllLocalCPythons().filter { it.homePath?.endsWith(mayaPyExecutableName) ?: false }
 
         val homePathsSet = mayaSdk.map { it.homePath!! }.toSet()
         val sdkMappingKeySet = mayaSdkMapping.keys.toSet()
