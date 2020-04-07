@@ -46,8 +46,7 @@ tasks {
 tasks.getByName<org.jetbrains.intellij.tasks.PatchPluginXmlTask>("patchPluginXml") {
     changeNotes("""
         <ul>
-            <li>Updated plugin project to use Gradle instead of the legacy DevKit</li>
-            <li>Now Supports PyCharm 2019.3</li>
+            <li>Fix for not detecting Maya instances to attach to on MacOs</li>
         </ul>
       """)
 }
